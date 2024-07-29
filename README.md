@@ -10,15 +10,12 @@ Database: MongoDB.
 Endpoints
 
 /register
-
 To register a user
 
 /signIn
-
 for signing in
 
 /
-
 for going to home page
 
 @Get

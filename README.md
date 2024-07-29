@@ -75,16 +75,25 @@ e.g :-
    
 
 Project Overview
+
 This project is a flight management web application designed with a modern tech stack:
 
 Backend: Spring Boot, MongoDB, and Spring Validations.
+
 Frontend: HTML, CSS, and Bootstrap.
+
 Template Engine: Thymeleaf.
+
 Features
+
 Flight Search: Users can search for flights by entering the IATA source code, destination code, and travel date. The flight details are fetched from MongoDB and displayed on the screen.
+
 View All Flights: Users can view a comprehensive list of flights, including details like flight status, departure gate, and potential delays.
+
 User Registration and Login: Users can register and log in using Jakarta Validations to ensure data integrity and security.
+
 Architecture
+
 The project employs Object-Oriented Programming (OOP) principles, with a well-defined architecture that includes:
 
 Service Layer: Manages business logic.

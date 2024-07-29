@@ -4,17 +4,21 @@ Required Software :-
 To run this application, you'll need:
 
 IDE: STS (Spring Tool Suite), VS Code, or any IDE that supports Spring Boot applications.
+
 Database: MongoDB.
 
 Endpoints
 
 /register
+
 To register a user
 
 /signIn
+
 for signing in
 
 /
+
 for going to home page
 
 @Get

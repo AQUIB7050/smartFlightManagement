@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In</title>
+<!-- Bootstrap CSS -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/signIn}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+
+
+
+	<!-- NAVBAR START -->
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" th:href="@{../}">SmartFlights</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>
+
+
+
+	<!-- NAVBAR END -->
+
+
+
+
+
+
+
+
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card mt-5">
+					<div class="card-header text-center">
+						<h2 class="text-uppercase">Sign In</h2>
+					</div>
+					<div class="card-body">
+						<form th:action="@{/processSignIn}" method="post">
+							<div class="form-group">
+								<label for="userName">User Name</label> 
+								<input type="text"
+									class="form-control" name="userName" id="userName" placeholder="Enter Username"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label> <input type="password"
+									class="form-control" name="userPassword" id="password" placeholder="Password"
+									required>
+							</div>
+							<button type="submit" class="btn btn-success btn-block">Sign
+								In</button>
+						</form>
+					</div>
+					<div class="card-footer text-center">
+						<a th:href="@{../register}">Don't have an account? Register
+							here.</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<div class="backgroundImageAccess"></div>
+	
+	<!-- Footer -->
+	<footer class="bg-primary text-white text-center py-3 mt-auto">
+		<p>&copy; 2024 SmartFlights. All rights reserved.</p>
+	</footer>
+	
+	
+
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

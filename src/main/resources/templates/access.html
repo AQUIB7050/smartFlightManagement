@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title th:text="${title}">Flight Booking Landing Page</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" th:href="@{/css/access.css}">
+</head>
+<body>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container">
+			<a class="navbar-brand" th:href="@{/}">SmartFlights</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="#features">Features</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#about">About
+							Us</a></li>
+					<li class="nav-item"><a class="nav-link" href="#contact">Contact</a>
+					</li>
+				</ul>
+
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{../signIn}">Sign In</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{../register}">Register</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<header class="hero bg-primary text-white text-center py-5">
+		<div class="container">
+			<h1 class="display-4">Find Your Perfect Flight</h1>
+			<p class="lead">Explore the world with the best flight deals and
+				easy booking.</p>
+			<a th:href="@{/flights}" class="btn btn-light btn-lg">View All
+				Flights</a>
+		</div>
+	</header>
+
+	<!-- Search Section -->
+	<section id="search" class="py-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<div class="card">
+						<div class="card-body">
+							<h2 class="card-title text-center">Search Flights</h2>
+							<form th:action="@{/getFlights}" method="get"
+								th:object="${flight}" novalidate="novalidate">
+								<div class="row">
+									<div class="col-md-6 mb-3">
+										<label for="origin" class="form-label">From</label> <input
+											type="text" th:value="${flight.departureCity}"
+											th:classappend="${#fields.hasErrors('departureCity') ? 'is-invalid' : ''}"
+											name="departureCity" class="form-control" id="origin"
+											placeholder="IATA code">
+
+										<div th:each="e:${#fields.errors('departureCity')}"
+											th:text="${e}" id="validationServer03Feedback"
+											class="invalid-feedback"></div>
+									</div>
+									<div class="col-md-6 mb-3">
+										<label for="destination" class="form-label">To</label> <input
+											type="text" th:value="${flight.arrivalCity}"
+											th:classappend="${#fields.hasErrors('arrivalCity') ? 'is-invalid' : ''}"
+											name="arrivalCity" class="form-control" id="destination"
+											placeholder="IATA code">
+
+										<div th:each="e:${#fields.errors('arrivalCity')}"
+											th:text="${e}" id="validationServer03Feedback"
+											class="invalid-feedback"></div>
+									</div>
+									<div class="col-md-6 mb-3">
+										<label for="departure" class="form-label">Departure
+											Date</label> <input type="date" name="dateOfDeparture"
+											class="form-control" id="departure">
+									</div>
+									<div class="col-12 text-center">
+										<button type="submit" class="btn btn-primary">Search
+											Flights</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Features Section -->
+	<section id="features" class="bg-light py-5">
+		<div class="container">
+			<h2 class="text-center mb-4">Our Features</h2>
+			<div class="row">
+				<div class="col-md-4 mb-4">
+					<div class="card">
+						<div class="card-body text-center">
+							<h5 class="card-title">Best Prices</h5>
+							<p class="card-text">We offer competitive prices on all
+								flights to ensure you get the best deal.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mb-4">
+					<div class="card">
+						<div class="card-body text-center">
+							<h5 class="card-title">Easy Booking</h5>
+							<p class="card-text">Book flights quickly and easily with our
+								user-friendly interface.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mb-4">
+					<div class="card">
+						<div class="card-body text-center">
+							<h5 class="card-title">24/7 Support</h5>
+							<p class="card-text">Our support team is available 24/7 to
+								assist you with any queries or issues.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- About Us Section -->
+	<section id="about" class="py-5">
+		<div class="container">
+			<h2 class="text-center mb-4">About Us</h2>
+			<h5>Welcome to Flight Management – Your Trusted Navigator in Air
+				Travel</h5>
+
+			<p>At Flight Management, we believe that every journey starts
+				with exceptional planning and ends with seamless execution. Our
+				mission is to take the stress out of air travel, so you can focus on
+				what truly matters – reaching your destination with peace of mind.</p>
+
+			<h5>Our Mission</h5>
+
+			<p>Our mission is simple yet profound: to transform the
+				complexities of air travel into a streamlined, stress-free
+				experience. We are committed to offering innovative flight
+				management solutions that cater to your unique needs. From
+				personalized assistance and real-time updates to efficient
+				problem-solving, we are here to ensure your travel is smooth and
+				enjoyable.</p>
+
+			<h5>Our Story</h5>
+
+			<p>Founded in 2010, Flight Management began with a vision to make
+				air travel easier and more accessible. What started as a passionate
+				startup has now grown into a leading name in flight management
+				services. Our journey has been fueled by a love for aviation and a
+				relentless pursuit of excellence.</p>
+
+			<p>Over the years, we have built a dedicated team of aviation
+				experts, customer service professionals, and technology innovators.
+				Each member of our team shares a common goal: to provide exceptional
+				service and adapt to the ever-evolving needs of our clients.</p>
+
+			<h5>Why Choose Us?</h5>
+
+			<p>Expertise: Our team combines years of industry experience with
+				cutting-edge technology to offer top-notch flight management
+				solutions. Personalized Service: We understand that every traveler
+				is unique. Our personalized approach ensures that your specific
+				needs are met with precision and care. Reliability: Trust us to
+				manage every detail of your flight with the utmost reliability, so
+				you can focus on your journey rather than logistics. Innovation: We
+				continuously embrace new technologies and trends to enhance our
+				services and keep you informed and ahead. Thank you for choosing
+				Flight Management. We are honored to be your partner in air travel
+				and look forward to making your journey as smooth and enjoyable as
+				possible.</p>
+			<p class="text-center">We are passionate about providing the best
+				flight booking experience. Our team is dedicated to offering the
+				best prices, seamless booking, and exceptional customer service.
+				Join us in exploring the world!</p>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section id="contact" class="bg-light py-5">
+		<div class="container">
+			<h2 class="text-center mb-4">Contact Us</h2>
+			<form th:action="@{/message}" method="post">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="name" class="form-label">Name</label> <input
+							type="text" class="form-control" id="name"
+							placeholder="Your Name">
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="email" class="form-label">Email</label> <input
+							type="email" class="form-control" id="email"
+							placeholder="Your Email">
+					</div>
+					<div class="col-12 mb-3">
+						<label for="message" class="form-label">Message</label>
+						<textarea class="form-control" id="message" rows="4"
+							placeholder="Your Message"></textarea>
+					</div>
+					<div class="col-12 text-center">
+						<button type="submit" class="btn btn-primary">Send
+							Message</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg-primary text-white text-center py-3">
+		<p>&copy; 2024 SmartFlights. All rights reserved.</p>
+	</footer>
+
+	<!-- Bootstrap JS and dependencies -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>
